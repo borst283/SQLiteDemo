@@ -106,7 +106,7 @@ namespace SQLiteDemo.ViewModels
 
         private async void DeleteContactCommandHandler(object obj)
         {
-            bool isUserAccept = await Application.Current.MainPage.DisplayAlert("Deleete this contact", "Do you want to deelte this contact?", "Yes", "No");
+            bool isUserAccept = await  Application.Current.MainPage.DisplayAlert("Deleete this contact", "Do you want to deelte this contact?", "Yes", "No");
             if (isUserAccept)
             {
                 ContactInfo contact = ((Button)obj).BindingContext as ContactInfo;
