@@ -1,0 +1,79 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             mc:Ignorable="d"
+             x:Name="AllContacts"
+             BackgroundColor="Orange"
+             Title="Contacts"
+             x:Class="SQLiteDemo.MainPage">
+
+    <StackLayout>
+
+        <ListView ItemsSource="{Binding ContactList}"
+                  HasUnevenRows="True">
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                    <ViewCell>
+                        <Frame BorderColor="DeepSkyBlue" BackgroundColor="Orange">
+                            <StackLayout Margin="20">
+                                <StackLayout Orientation="Horizontal">
+                                    <Label Text="Id:"/>
+                                    <Label Text="{Binding Id}"/>
+                                </StackLayout>
+
+                                <StackLayout Orientation="Horizontal">
+                                    <Label Text="Name:"/>
+                                    <Label Text="{Binding Name}"/>
+                                </StackLayout>
+
+                                <StackLayout Orientation="Horizontal">
+                                    <Label Text="Age:"/>
+                                    <Label Text="{Binding Age}"/>
+                                </StackLayout>
+
+                                <StackLayout Orientation="Horizontal">
+                                    <Label Text="Gender:"/>
+                                    <Label Text="{Binding Gender}"/>
+                                </StackLayout>
+
+                                <StackLayout Orientation="Horizontal">
+                                    <Label Text="Address:"/>
+                                    <Label Text="{Binding Address}"/>
+                                </StackLayout>
+
+                                <StackLayout Orientation="Horizontal">
+                                    <Label Text="Mobile Number:"/>
+                                    <Label Text="{Binding MobileNumber}"/>
+                                </StackLayout>
+
+                                <Button Text="Edit Contact" x:Name="ButtonEdit"
+                                    BackgroundColor="DeepSkyBlue"
+                                    Command="{Binding Source={x:Reference Name=AllContacts}, Path=BindingContext.EditContactCommand}"
+                                    CommandParameter="{x:Reference ButtonEdit}"
+                                    HorizontalOptions="Fill"/>
+
+                                <Button Text="Delete Contact" x:Name="ButtonDelete"
+                                    BackgroundColor="Black"
+                                    TextColor="White"
+                                    Command="{Binding Source={x:Reference Name=AllContacts}, Path=BindingContext.DeleteContactCommand}"
+                                    CommandParameter="{x:Reference ButtonDelete}"
+                                    HorizontalOptions="Fill"/>
+
+                            </StackLayout>
+                        </Frame>
+                    </ViewCell>
+                </DataTemplate>
+            </ListView.ItemTemplate>
+        </ListView>
+
+        <Button Text="Create contact" VerticalOptions="End" Command="{Binding NewUserCommand}" 
+                HorizontalOptions="Fill" BorderWidth="10" BackgroundColor="DeepSkyBlue" TextColor="White"/>
+
+        <Button Text="Delete All Contacts" VerticalOptions="End" Command="{Binding DeleteAllContactsCommand}" 
+                HorizontalOptions="Fill" BorderWidth="10" BackgroundColor="DeepSkyBlue" TextColor="White"/>
+
+    </StackLayout>
+
+</ContentPage>
